@@ -16,7 +16,9 @@ class NekochanSeeder extends Seeder
     public function run()
     {
         DB::table('nekochans')->insert([
+            'id' => 1,
             'name' => 'うめ',
+            'birthday' => '20220505',
         ]);
     }
 }

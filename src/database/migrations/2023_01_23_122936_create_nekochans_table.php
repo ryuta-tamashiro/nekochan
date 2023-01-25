@@ -14,9 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('nekochans', function (Blueprint $table) {
-            $table->id();
+            $table->id()->comment('PK');
             $table->string('name');
-            $table->timestamps();
+            $table->date('birthday')->nullable()->index('index_birthday')->comment('生年月日');
+            $table->datetime('created_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('作成日時');
+            $table->datetime('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))->comment('更新日時');
         });
     }
 
