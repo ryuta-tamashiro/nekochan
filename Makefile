@@ -3,7 +3,8 @@ container=app
 init:
 	cp src/.env.local src/.env
 	docker-compose up -d
-	sleep 6
+	# migrateでエラーになるので10秒待つ
+	sleep 10
 	docker-compose exec $(container) composer install
 	docker-compose exec $(container) php artisan key:generate
 	docker-compose exec $(container) php artisan migrate
