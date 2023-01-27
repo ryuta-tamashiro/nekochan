@@ -24,10 +24,10 @@ services:
       - nekochan-db-volume:/var/lib/mysql
     platform: linux/amd64
     environment:
-      MYSQL_DATABASE: laravel_db
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
-      TZ: Asia/Tokyo
+      - MYSQL_DATABASE=laravel_db
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+      - TZ=Asia/Tokyo
 volumes:
   nekochan-db-volume:
