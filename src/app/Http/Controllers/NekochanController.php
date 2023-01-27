@@ -16,8 +16,8 @@ class NekochanController extends Controller
             ->toArray()
             ;
 
-        dd($nekochans);
+        // dd($nekochans);
 
-        return view('welcome');
+        return view('nekochan/index');
     }
 }
