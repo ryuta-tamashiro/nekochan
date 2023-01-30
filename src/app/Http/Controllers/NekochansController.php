@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Nekochan;
 use Illuminate\Http\Request;
 
-class NekochanController extends Controller
+class NekochansController extends Controller
 {
     public function index()
     {

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\NekochanController;
+use App\Http\Controllers\NekochansController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +19,4 @@ use App\Http\Controllers\NekochanController;
 // });
 
 
-Route::get('/', [NekochanController::class, 'index']);
+Route::get('/', [NekochansController::class, 'index']);
