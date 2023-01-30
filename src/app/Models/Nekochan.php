@@ -10,4 +10,6 @@ class Nekochan extends Model
     use HasFactory;
 
     protected $table = 'nekochans';
+    protected $fillable = ['name', 'birthday'];
+
 }

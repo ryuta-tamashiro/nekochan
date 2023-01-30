@@ -1,23 +1,55 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\Nekochan;
 use Illuminate\Http\Request;
 
 class NekochansController extends Controller
 {
+    /**
+     * 猫ちゃん一覧ページ
+     *
+     * @return mixed
+     */
     public function index()
     {
-        $nekochans = Nekochan::where('name', 'うめ')
-            ->orderBy('name')
-            ->take(10)
+        $nekochans = Nekochan::
+            select('id', 'name', 'birthday', 'created_at', 'updated_at')
             ->get()
             ->toArray()
             ;
 
-        // dd($nekochans);
+        return view('nekochan/index', compact('nekochans'));
+    }
 
-        return view('nekochan/index');
+    /**
+     * 猫ちゃん新規登録ページ
+     *
+     * @return mixed
+     */
+    public function create()
+    {
+        return view('nekochan/create');
+    }
+
+    /**
+     * 猫ちゃん新規登録処理
+     *
+     * @param Request $request
+     *
+     * @return mixed
+     */
+
+    public function store(Request $request)
+    {
+        DB::transaction(function () use($request) {
+            Nekochan::create([
+                'name'     => $request->input('name'),
+                'birthday'    => $request->input('birthday'),
+            ]);
+        });
+
+        return redirect('nekochan');
     }
 }

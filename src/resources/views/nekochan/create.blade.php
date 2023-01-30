@@ -17,7 +17,7 @@
             <div class="border-end bg-white" id="sidebar-wrapper">
                 <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div>
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{ route('nekochan.create') }}">猫ちゃん情報登録</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">猫ちゃん情報登録</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Shortcuts</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Overview</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Events</a>
@@ -51,21 +51,19 @@
                 </nav>
                 <!-- Page content-->
                 <div class="container-fluid">
-                    <h1 class="mt-4">猫ちゃん一覧</h1>
-                    <table>
-                    <tr>
-                        <th>名前</th>
-                        <th>誕生日</th>
-                        <th>登録日時</th>
-                    </tr>
-                    @foreach($nekochans as $nekochan)
-                    <tr>
-                        <td>{{$nekochan['name']}}</td>
-                        <td>{{$nekochan['birthday']}}</td>
-                        <td>{{$nekochan['created_at']}}</td>
-                    </tr>
-                    @endforeach
-                    </table>
+                <h1>新規作成</h1>
+                    <form method="POST" action="{{route('nekochan.store')}}">
+                        @csrf
+                        <div>
+                            <label for="form-name">名前</label>
+                            <input type="text" name="name" id="form-name" required>
+                        </div>
+                        <div>
+                            <label for="form-birthday">生年月日</label>
+                            <input type="text" name="birthday" id="form-birthday">
+                        </div>
+                        <button type="submit">登録</button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -14,9 +14,11 @@ use App\Http\Controllers\NekochansController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 
-Route::get('/', [NekochansController::class, 'index']);
+Route::get('/nekochan', [NekochansController::class, 'index'])->name('nekochan');
+Route::get('/nekochan/craete', [NekochansController::class, 'create'])->name('nekochan.create');
+Route::post('/nekochan/store', [NekochansController::class, 'store'])->name('nekochan.store');
