@@ -92,7 +92,6 @@ class NekochansController extends Controller
 
     public function update(Request $request, $id)
     {
-
         DB::transaction(function () use($request, $id) {
             Nekochan::find($id)->update([
                 'name'     => $request->input('name'),
@@ -101,5 +100,22 @@ class NekochansController extends Controller
         });
 
         return redirect()->route('nekochan.edit', ['id' => $id]);
+    }
+
+    /**
+     * 猫ちゃん情報削除
+     *
+     * @param int $id
+     *
+     * @return mixed
+     */
+
+    public function destroy($id)
+    {
+        DB::transaction(function () use($id) {
+            Nekochan::find($id)->delete();
+        });
+
+        return redirect('nekochan');
     }
 }

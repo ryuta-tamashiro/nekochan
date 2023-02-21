@@ -10,6 +10,7 @@
         <th>登録日時</th>
         <th>更新日時</th>
         <th>編集</th>
+        <th>削除</th>
     </tr>
     <tr>
         <td>{{ $nekochan->name }}</td>
@@ -17,6 +18,12 @@
         <td>{{ $nekochan->created_at->format('Y/m/d H:i:s') }}</td>
         <td>{{ $nekochan->updated_at->format('Y/m/d H:i:s') }}</td>
         <td><a href="{{route('nekochan.edit',['id'=>$nekochan->id])}}">{{ __('編集') }}</a></td>
+        <td>
+            <form method="POST" action="{{route('nekochan.destroy',['id'=>$nekochan->id])}}">
+                @csrf
+                <button type="submit">削除</button>
+            </form>
+        </td>
     </tr>
     </table>
 </div>

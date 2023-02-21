@@ -25,3 +25,4 @@ Route::post('/nekochan/store', [NekochansController::class, 'store'])->name('nek
 Route::get('/nekochan/show/{id}', [NekochansController::class, 'show'])->name('nekochan.show');
 Route::get('/nekochan/edit/{id}', [NekochansController::class, 'edit'])->name('nekochan.edit');
 Route::post('/nekochan/update/{id}', [NekochansController::class, 'update'])->name('nekochan.update');
+Route::post('/nekochan/destroy/{id}', [NekochansController::class, 'destroy'])->name('nekochan.destroy');
