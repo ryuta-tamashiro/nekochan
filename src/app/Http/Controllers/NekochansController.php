@@ -66,4 +66,40 @@ class NekochansController extends Controller
 
         return view('nekochan/show', compact('nekochan'));
     }
+
+    /**
+     * 猫ちゃん情報編集
+     *
+     * @param int $id
+     *
+     * @return mixed
+     */
+
+    public function edit($id)
+    {
+        $nekochan = Nekochan::find($id);
+
+        return view('nekochan/edit', compact('nekochan'));
+    }
+
+    /**
+     * 猫ちゃん情報編集
+     *
+     * @param int $id
+     *
+     * @return mixed
+     */
+
+    public function update(Request $request, $id)
+    {
+
+        DB::transaction(function () use($request, $id) {
+            Nekochan::find($id)->update([
+                'name'     => $request->input('name'),
+                'birthday'    => $request->input('birthday'),
+            ]);
+        });
+
+        return redirect()->route('nekochan.edit', ['id' => $id]);
+    }
 }
