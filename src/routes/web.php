@@ -22,3 +22,4 @@ Route::get('/', function () {
 Route::get('/nekochan', [NekochansController::class, 'index'])->name('nekochan');
 Route::get('/nekochan/craete', [NekochansController::class, 'create'])->name('nekochan.create');
 Route::post('/nekochan/store', [NekochansController::class, 'store'])->name('nekochan.store');
+Route::get('/nekochan/show/{id}', [NekochansController::class, 'show'])->name('nekochan.show');

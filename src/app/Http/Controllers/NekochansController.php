@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class NekochansController extends Controller
 {
     /**
-     * 猫ちゃん一覧ページ
+     * 猫ちゃん一覧画面
      *
      * @return mixed
      */
@@ -16,15 +16,14 @@ class NekochansController extends Controller
     {
         $nekochans = Nekochan::
             select('id', 'name', 'birthday', 'created_at', 'updated_at')
-            ->get()
-            ->toArray()
-            ;
+                ->get()
+                ;
 
         return view('nekochan/index', compact('nekochans'));
     }
 
     /**
-     * 猫ちゃん新規登録ページ
+     * 猫ちゃん新規登録画面
      *
      * @return mixed
      */
@@ -51,5 +50,20 @@ class NekochansController extends Controller
         });
 
         return redirect('nekochan');
+    }
+
+    /**
+     * 猫ちゃん詳細画面
+     *
+     * @param int $id
+     *
+     * @return mixed
+     */
+
+    public function show($id)
+    {
+        $nekochan = Nekochan::find($id);
+
+        return view('nekochan/show', compact('nekochan'));
     }
 }
