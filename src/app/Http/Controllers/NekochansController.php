@@ -99,7 +99,7 @@ class NekochansController extends Controller
             ]);
         });
 
-        return redirect()->route('nekochan.edit', ['id' => $id]);
+        return redirect()->route('nekochan.show', ['id' => $id]);
     }
 
     /**
